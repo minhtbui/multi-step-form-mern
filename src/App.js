@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.scss';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Header from './components/Header';
+import FirstStep from './components/FirstStep';
+import SecondStep from './components/SecondStep';
+import FinalStep from './components/FinalStep';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <div className='container'>
+                <Header />
+                <Switch>
+                    <Route component={FirstStep} path='/' exact />
+                    <Route component={SecondStep} path='/second' />
+                    <Route component={FinalStep} path='/final' />
+                </Switch>
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;
+
+//https://www.freecodecamp.org/news/build-a-multi-step-registration-app-with-animated-transitions-using-mern-stack/
